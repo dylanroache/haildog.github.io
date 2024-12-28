@@ -2384,26 +2384,6 @@ input, select, textarea {
 				border-top: 0;
 			}
 
-	.image {
-		box-shadow: 0 0 0 4px #ffffff, 0 0 0 5px #e6e6e6;
-	}
-
-		.image.phone {
-			box-shadow: none;
-		}
-
-			.image.phone .inner, .image.phone:before, .image.phone:after {
-				border-color: #e6e6e6;
-			}
-
-			.image.phone .inner:before {
-				background: #e6e6e6;
-			}
-
-			.image.phone .inner:after {
-				border-color: #e6e6e6;
-			}
-
 /* List */
 
 	ol {
