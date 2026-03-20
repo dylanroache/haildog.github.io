@@ -96,10 +96,6 @@
   .card-back .event-statement .statement-text { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--burgundy); line-height: 1.35; }
   .card-back .event-statement .statement-sub { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: var(--deep-rose); font-style: italic; margin-top: 6px; line-height: 1.4; }
 
-  .day-card.special .card-back { background: linear-gradient(135deg, var(--white), #FFF8F0); border-color: var(--gold); }
-  .day-card.special .event-statement .statement-text { font-size: 1.5rem; color: var(--gold); }
-  .day-card.special .event-statement .statement-sub { color: var(--rose); }
-
   .footer { text-align: center; padding: 0 20px 60px; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--blush); letter-spacing: 0.1em; }
 
   .day-card { opacity: 0; transform: translateY(30px); animation: cardIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
@@ -215,9 +211,7 @@ const days = [
   },
   {
     date: 29, dayName: "Sunday", label: "Sunday, March 29",
-    special: true,
     events: [
-      { statement: true, text: "We're going to Asia this summer or fall.", sub: "I'll take vacation whenever works best for you" },
       { icon: "🥟", time: "10:30 AM", name: "Din Tai Fung — round two" },
       { icon: "🚌", time: "2:00 PM", name: "Bus back to Maryland" }
     ]
@@ -228,7 +222,7 @@ const calendar = document.getElementById('calendar');
 
 days.forEach((day) => {
   const card = document.createElement('div');
-  card.className = 'day-card' + (day.special ? ' special' : '') + (day.anniversary ? ' anniversary' : '');
+  card.className = 'day-card' + (day.anniversary ? ' anniversary' : '');
 
   let eventsHTML = day.events.map((e) => {
     if (e.statement) {
