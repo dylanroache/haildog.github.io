@@ -39,88 +39,21 @@
   }
 
   .hero { text-align: center; padding: 80px 20px 50px; position: relative; }
-
-  .hero::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin: 0 auto;
-    margin-top: 30px;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    font-weight: 400;
-    color: var(--burgundy);
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-  }
-
+  .hero::after { content: ''; display: block; width: 60px; height: 1px; background: var(--gold); margin: 0 auto; margin-top: 30px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 400; color: var(--burgundy); letter-spacing: 0.02em; line-height: 1.2; }
   .hero h1 em { font-style: italic; color: var(--rose); }
+  .hero .subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 300; color: var(--deep-rose); margin-top: 16px; letter-spacing: 0.15em; text-transform: uppercase; }
 
-  .hero .subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    font-weight: 300;
-    color: var(--deep-rose);
-    margin-top: 16px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
+  .calendar { max-width: 900px; margin: 0 auto; padding: 20px 24px 100px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
 
-  .calendar {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px 24px 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 24px;
-  }
+  .day-card { position: relative; border-radius: 16px; cursor: pointer; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); aspect-ratio: 1 / 1; overflow: hidden; }
+  .day-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(107, 58, 58, 0.12); }
 
-  .day-card {
-    position: relative;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-  }
-
-  .day-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(107, 58, 58, 0.12);
-  }
-
-  .day-card .card-front {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    border-radius: 16px;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    backface-visibility: hidden;
-    border: 1px solid rgba(196, 162, 101, 0.25);
-  }
-
+  .day-card .card-front { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 16px; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); backface-visibility: hidden; border: 1px solid rgba(196, 162, 101, 0.25); }
   .day-card .card-front .day-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; line-height: 1; }
   .day-card .card-front .day-name { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 10px; opacity: 0.7; }
-
-  .day-card .card-front .card-badge {
-    position: absolute; top: 16px; right: 16px;
-    font-family: 'Cormorant Garamond', serif; font-size: 0.7rem;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 20px;
-    background: rgba(196, 162, 101, 0.25); color: var(--burgundy);
-  }
-
-  .day-card .card-front .tap-hint {
-    position: absolute; bottom: 20px;
-    font-family: 'Cormorant Garamond', serif; font-size: 0.75rem;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    opacity: 0; transition: opacity 0.3s ease;
-  }
-
+  .day-card .card-front .card-badge { position: absolute; top: 16px; right: 16px; font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; background: rgba(196, 162, 101, 0.25); color: var(--burgundy); }
+  .day-card .card-front .tap-hint { position: absolute; bottom: 20px; font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0; transition: opacity 0.3s ease; }
   .day-card:hover .card-front .tap-hint { opacity: 0.5; }
 
   .day-card:nth-child(1) .card-front { background: linear-gradient(135deg, #EDE3D8, #E0D2C2); }
@@ -146,21 +79,11 @@
 
   .day-card.anniversary .card-front { background: linear-gradient(135deg, #E0D2C2, #D4C4AE); border-color: var(--gold); }
 
-  .day-card .card-back {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column;
-    padding: 28px 24px; border-radius: 16px;
-    background: var(--white); border: 1px solid var(--gold-light);
-    opacity: 0; transform: scale(0.95);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    pointer-events: none; overflow-y: auto;
-  }
-
+  .day-card .card-back { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 28px 24px; border-radius: 16px; background: var(--white); border: 1px solid var(--gold-light); opacity: 0; transform: scale(0.95); transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); pointer-events: none; overflow-y: auto; }
   .day-card.revealed .card-front { opacity: 0; transform: scale(1.05); pointer-events: none; }
   .day-card.revealed .card-back { opacity: 1; transform: scale(1); pointer-events: auto; }
 
   .card-back .back-date { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-
   .card-back .event { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
   .card-back .event-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; margin-top: 2px; }
   .card-back .event-details { flex: 1; }
@@ -222,12 +145,14 @@ const days = [
     events: [
       { statement: true, text: "Happy Anniversary!" },
       { icon: "🚌", time: "1:30 PM", name: "You arrive from Maryland" },
+      { icon: "🤗", name: "A hug" },
       { icon: "🌙", time: "Evening", name: "Your plans", note: "Your gift to me" }
     ]
   },
   {
     date: 21, dayName: "Saturday", label: "Saturday, March 21",
     events: [
+      { icon: "😘", name: "A kiss" },
       { icon: "☀️", time: "Afternoon", name: "With Lara & Jack" },
       { icon: "🍽️", time: "Evening", name: "Dinner with Lara & Jack" }
     ]
@@ -237,13 +162,14 @@ const days = [
     events: [
       { icon: "🥟", time: "10:30 AM", name: "Din Tai Fung" },
       { icon: "🌉", time: "Afternoon", name: "Walk the Brooklyn Bridge & explore DUMBO" },
-      { icon: "🍷", time: "7:00 PM", name: "Dinner with Alex & Ben" }
+      { icon: "🍴", time: "7:00 PM", name: "Dinner with Alex & Ben" }
     ]
   },
   {
     date: 23, dayName: "Monday", label: "Monday, March 23",
     events: [
       { icon: "💻", time: "Daytime", name: "I'll be working from home" },
+      { icon: "🌇", time: "Sunset", name: "Walk Gantry Plaza State Park" },
       { icon: "🍝", time: "7:00 PM", name: "Osteria LIC" }
     ]
   },
@@ -251,21 +177,24 @@ const days = [
     date: 24, dayName: "Tuesday", label: "Tuesday, March 24",
     events: [
       { icon: "🏢", time: "Daytime", name: "I'll be in the office" },
-      { icon: "🎁", name: "Something to unwrap", note: "Might come in handy this week" }
+      { icon: "🎁", name: "Something to unwrap", note: "Might come in handy this week" },
+      { icon: "🏙️", name: "Meet me in Manhattan?" }
     ]
   },
   {
     date: 25, dayName: "Wednesday", label: "Wednesday, March 25",
     events: [
       { icon: "🏢", time: "Daytime", name: "I'll be in the office" },
-      { icon: "🎁", name: "A couple things waiting for you", note: "Something to squeeze" }
+      { icon: "🎁", name: "A couple things waiting for you", note: "Something to squeeze" },
+      { icon: "🍷", time: "After work", name: "Drinks" }
     ]
   },
   {
     date: 26, dayName: "Thursday", label: "Thursday, March 26",
     events: [
       { icon: "💻", time: "Daytime", name: "Working from home" },
-      { icon: "🌮", time: "7:00 PM", name: "Casa Enrique", note: "Michelin-starred Mexican" }
+      { icon: "🌮", time: "7:00 PM", name: "Casa Enrique", note: "Michelin-starred Mexican" },
+      { icon: "🎳", time: "After dinner", name: "Bowling?" }
     ]
   },
   {
@@ -279,6 +208,7 @@ const days = [
   {
     date: 28, dayName: "Saturday", label: "Saturday, March 28",
     events: [
+      { icon: "🍜", time: "Lunch", name: "Tuk Tuk?" },
       { icon: "🧖", time: "2:00 PM", name: "Aire Ancient Baths", note: "Couples massage" },
       { icon: "😂", time: "8:00 PM", name: "Comedy show", note: "Your gift to me" }
     ]
