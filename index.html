@@ -6,56 +6,24 @@
 <title>Our Anniversary Week</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lora:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #FDF6EC;
-    --blush: #E8C4B8;
-    --rose: #C9928A;
-    --deep-rose: #9B6B63;
-    --burgundy: #6B3A3A;
-    --dark: #3A2020;
-    --gold: #C4A265;
-    --gold-light: #E8D5A8;
-    --white: #FFFCF7;
-  }
-
+  :root { --cream: #FDF6EC; --blush: #E8C4B8; --rose: #C9928A; --deep-rose: #9B6B63; --burgundy: #6B3A3A; --dark: #3A2020; --gold: #C4A265; --gold-light: #E8D5A8; --white: #FFFCF7; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--cream);
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--dark);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-  }
-
+  body { background: var(--cream); font-family: 'Cormorant Garamond', serif; color: var(--dark); min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; }
   .hero { text-align: center; padding: 80px 20px 50px; position: relative; }
   .hero::after { content: ''; display: block; width: 60px; height: 1px; background: var(--gold); margin: 0 auto; margin-top: 30px; }
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 400; color: var(--burgundy); letter-spacing: 0.02em; line-height: 1.2; }
   .hero h1 em { font-style: italic; color: var(--rose); }
   .hero .subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 300; color: var(--deep-rose); margin-top: 16px; letter-spacing: 0.15em; text-transform: uppercase; }
-
   .calendar { max-width: 900px; margin: 0 auto; padding: 20px 24px 100px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
-
   .day-card { position: relative; border-radius: 16px; cursor: pointer; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); aspect-ratio: 1 / 1; overflow: hidden; }
   .day-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(107, 58, 58, 0.12); }
-
   .day-card .card-front { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 16px; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); backface-visibility: hidden; border: 1px solid rgba(196, 162, 101, 0.25); }
   .day-card .card-front .day-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; line-height: 1; }
   .day-card .card-front .day-name { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 10px; opacity: 0.7; }
   .day-card .card-front .card-badge { position: absolute; top: 16px; right: 16px; font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; background: rgba(196, 162, 101, 0.25); color: var(--burgundy); }
   .day-card .card-front .tap-hint { position: absolute; bottom: 20px; font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0; transition: opacity 0.3s ease; }
   .day-card:hover .card-front .tap-hint { opacity: 0.5; }
-
   .day-card:nth-child(1) .card-front { background: linear-gradient(135deg, #EDE3D8, #E0D2C2); }
   .day-card:nth-child(1) .card-front .day-number { color: var(--gold); }
   .day-card:nth-child(2) .card-front { background: linear-gradient(135deg, #F2E6DC, #E8D5C4); }
@@ -76,13 +44,10 @@
   .day-card:nth-child(9) .card-front .day-number { color: var(--burgundy); }
   .day-card:nth-child(10) .card-front { background: linear-gradient(135deg, #F0E4D8, #E6D8C8); }
   .day-card:nth-child(10) .card-front .day-number { color: var(--rose); }
-
   .day-card.anniversary .card-front { background: linear-gradient(135deg, #E0D2C2, #D4C4AE); border-color: var(--gold); }
-
   .day-card .card-back { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 28px 24px; border-radius: 16px; background: var(--white); border: 1px solid var(--gold-light); opacity: 0; transform: scale(0.95); transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); pointer-events: none; overflow-y: auto; }
   .day-card.revealed .card-front { opacity: 0; transform: scale(1.05); pointer-events: none; }
   .day-card.revealed .card-back { opacity: 1; transform: scale(1); pointer-events: auto; }
-
   .card-back .back-date { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
   .card-back .event { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
   .card-back .event-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; margin-top: 2px; }
@@ -91,13 +56,10 @@
   .card-back .event-name { font-family: 'Lora', serif; font-size: 0.95rem; color: var(--dark); line-height: 1.5; }
   .card-back .event-note { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; color: var(--deep-rose); font-style: italic; margin-top: 3px; line-height: 1.4; }
   .card-back .divider { width: 30px; height: 1px; background: var(--gold-light); margin: 6px 0 14px; }
-
   .card-back .event-statement { margin: 4px 0 14px; padding-left: 2px; }
   .card-back .event-statement .statement-text { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--burgundy); line-height: 1.35; }
   .card-back .event-statement .statement-sub { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: var(--deep-rose); font-style: italic; margin-top: 6px; line-height: 1.4; }
-
   .footer { text-align: center; padding: 0 20px 60px; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--blush); letter-spacing: 0.1em; }
-
   .day-card { opacity: 0; transform: translateY(30px); animation: cardIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
   .day-card:nth-child(1) { animation-delay: 0.1s; }
   .day-card:nth-child(2) { animation-delay: 0.18s; }
@@ -109,11 +71,9 @@
   .day-card:nth-child(8) { animation-delay: 0.66s; }
   .day-card:nth-child(9) { animation-delay: 0.74s; }
   .day-card:nth-child(10) { animation-delay: 0.82s; }
-
   @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
   .hero { opacity: 0; animation: fadeIn 1s ease forwards; }
   @keyframes fadeIn { to { opacity: 1; } }
-
   @media (max-width: 600px) {
     .hero { padding: 50px 20px 30px; }
     .calendar { gap: 16px; padding: 20px 16px 80px; }
@@ -165,8 +125,8 @@ const days = [
     date: 23, dayName: "Monday", label: "Monday, March 23",
     events: [
       { icon: "💻", time: "Daytime", name: "I'll be working from home" },
-      { icon: "🌇", time: "Sunset", name: "Walk Gantry Plaza State Park" },
-      { icon: "🍝", time: "7:00 PM", name: "Osteria LIC" }
+      { icon: "🍝", time: "7:00 PM", name: "Osteria LIC" },
+      { icon: "📺", time: "Evening", name: "Watch The Pitt and drink wine" }
     ]
   },
   {
@@ -174,7 +134,7 @@ const days = [
     events: [
       { icon: "🏢", time: "Daytime", name: "I'll be in the office" },
       { icon: "🎁", name: "Something to unwrap", note: "Might come in handy this week" },
-      { icon: "🏙️", name: "Meet me in Manhattan?" }
+      { icon: "🌇", time: "Sunset", name: "Walk Gantry Plaza State Park", note: "Take pictures in nice clothes" }
     ]
   },
   {
@@ -226,46 +186,17 @@ days.forEach((day) => {
 
   let eventsHTML = day.events.map((e) => {
     if (e.statement) {
-      return `
-        <div class="event-statement">
-          <div class="statement-text">${e.text}</div>
-          ${e.sub ? `<div class="statement-sub">${e.sub}</div>` : ''}
-        </div>
-      `;
+      return `<div class="event-statement"><div class="statement-text">${e.text}</div>${e.sub ? `<div class="statement-sub">${e.sub}</div>` : ''}</div>`;
     }
-    return `
-      <div class="event">
-        <div class="event-icon">${e.icon}</div>
-        <div class="event-details">
-          ${e.time ? `<div class="event-time">${e.time}</div>` : ''}
-          <div class="event-name">${e.name}</div>
-          ${e.note ? `<div class="event-note">${e.note}</div>` : ''}
-        </div>
-      </div>
-    `;
+    return `<div class="event"><div class="event-icon">${e.icon}</div><div class="event-details">${e.time ? `<div class="event-time">${e.time}</div>` : ''}<div class="event-name">${e.name}</div>${e.note ? `<div class="event-note">${e.note}</div>` : ''}</div></div>`;
   }).join('<div class="divider"></div>');
 
   const badgeHTML = day.badge ? `<div class="card-badge">${day.badge}</div>` : '';
 
-  card.innerHTML = `
-    <div class="card-front">
-      ${badgeHTML}
-      <div class="day-number">${day.date}</div>
-      <div class="day-name">${day.dayName}</div>
-      <div class="tap-hint">tap to reveal</div>
-    </div>
-    <div class="card-back">
-      <div class="back-date">${day.label}</div>
-      ${eventsHTML}
-    </div>
-  `;
+  card.innerHTML = `<div class="card-front">${badgeHTML}<div class="day-number">${day.date}</div><div class="day-name">${day.dayName}</div><div class="tap-hint">tap to reveal</div></div><div class="card-back"><div class="back-date">${day.label}</div>${eventsHTML}</div>`;
 
   card.addEventListener('click', () => {
-    if (card.classList.contains('revealed')) {
-      card.classList.remove('revealed');
-    } else {
-      card.classList.add('revealed');
-    }
+    card.classList.toggle('revealed');
   });
 
   calendar.appendChild(card);
